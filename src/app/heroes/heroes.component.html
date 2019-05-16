@@ -1,0 +1,90 @@
+<h2> My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+  </li>
+</ul>
+
+
+
+
+
+<!--  <ul class="heroes">-->
+<!--    <li *ngFor="let hero of heroes"-->
+<!--        [class.selected]="hero === selectedHero"-->
+<!--        (click)="onSelect(hero)">-->
+<!--      <span class="badge">{{hero.id}}</span> {{hero.name}}-->
+<!--    </li>-->
+<!--  </ul>-->
+
+<!--child component binding-->
+<!--Bind the HeroesComponent.selectedHero to the element's hero property like this.-->
+
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>    -   <--replaced with routing links-->
+
+<!--[hero]="selectedHero" is an Angular property binding.-->
+<!--It's a one way data binding from the selectedHero property of the HeroesComponent -->
+<!--to the hero property of the target element, -->
+<!--which maps to the hero property of the HeroDetailComponent.-->
+<!--Now when the user clicks a hero in the list, the selectedHero changes. -->
+<!--When the selectedHero changes, the property binding updates hero -->
+<!--and the HeroDetailComponent displays the new hero.-->
+
+
+<!--The Angular class binding makes it easy to add and remove a CSS class conditionally. -->
+<!--Just add [class.some-css-class]="some-condition" to the element you want to style.-->
+
+<!--Add the following [class.selected] binding to the <li> in the HeroesComponent template:-->
+
+<!--  heroes.component.html (toggle the 'selected' CSS class)-->
+<!--  content_copy-->
+<!--  [class.selected]="hero === selectedHero"-->
+<!--When the current row hero is the same as the selectedHero, -->
+<!--Angular adds the selected CSS class. When the two heroes are different, Angular removes the class.-->
+
+
+<!--Listen for the hero item click event and update the hero detail.-->
+<!--Add a click event binding to the <li>-->
+<!--<li *ngFor="let hero of heroes" (click)="onSelect(hero)">-->
+
+<!--This is an example of Angular's event binding syntax.-->
+<!--The parentheses around click tell Angular to listen for the <li> element's click event. -->
+<!--When the user clicks in the <li>, Angular executes the onSelect(hero) expression.-->
+<!--onSelect() is a HeroesComponent method that you're about to write. -->
+<!--Angular calls it with the hero object displayed in the clicked <li>, -->
+<!--the same hero defined previously in the *ngFor expression.-->
+
+
+
+<!--The *ngFor is Angular's repeater directive. -->
+<!--It repeats the host element for each element in a list.-->
+
+<!--In this example-->
+
+<!--<li> is the host element-->
+<!--  heroes is the list from the HeroesComponent class.-->
+<!--  hero holds the current hero object for each iteration through the list.-->
+
+
+
+<!--Users should be able to edit the hero name in an <input> textbox.-->
+<!--The textbox should both display the hero's name property and update that property as the user types.-->
+<!--That means data flow from the component class out to the screen and from the screen back to the class.-->
+<!--To automate that data flow, setup a two-way data binding between the <input> form element and the hero.name property.-->
+<!--Two-way binding-->
+<!--Refactor the details area in the HeroesComponent template so it looks like this:-->
+
+<!--src/app/heroes/heroes.component.html (HeroesComponent's template)-->
+<!--content_copy-->
+<!--<div>-->
+<!--  <label>name:-->
+<!--    <input [(ngModel)]="hero.name" placeholder="name"/>-->
+<!--  </label>-->
+<!--</div>-->
+
+<!--[(ngModel)] is Angular's two-way data binding syntax.-->
+
+<!--Here it binds the hero.name property to the HTML textbox so that data can flow in both directions:-->
+<!--from the hero.name property to the textbox, and from the textbox back to the hero.name.-->
