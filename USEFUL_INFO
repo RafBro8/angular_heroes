@@ -31,7 +31,6 @@ Services are a great way to share information among classes that don't know each
 Use Dependency Injection to inject Service into Component's constructor
 @Injectable() decorator marks the class as one that participates in the dependency injection system.
 
+Observable does nothing until something subscribes!
 
 
-
-NEXT START WITH:     6. HTTP  --

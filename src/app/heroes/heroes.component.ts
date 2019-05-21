@@ -24,6 +24,7 @@ export class HeroesComponent implements OnInit {
   // replaced with routing in html
   // onSelect(hero: Hero): void {
   //   this.selectedHero = hero;
+// onSelect() method assigns the clicked hero from the template to the component's selectedHero.
   // }
 
 
@@ -32,10 +33,24 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
+
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+// When addHero saves successfully, the subscribe callback receives the new hero
+// and pushes it into to the heroes list for display.
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
+  }
 }
-
-// onSelect() method assigns the clicked hero from the template to the component's selectedHero.
-
 
 // The HeroesComponent is still a master/detail view.
 // It used to display the hero details on its own, before you cut that portion of the template.

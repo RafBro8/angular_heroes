@@ -6,13 +6,14 @@
   hero has a value and ngIf puts the hero detail into the DOM.-->
   <div *ngIf="hero">
 
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
-  </div>
+    <h2>{{hero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{hero.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="hero.name" placeholder="name"/>
+      </label>
+    </div>
 
-<button (click)="goBack()">BACK</button>
-</div>
+    <button (click)="goBack()">BACK</button>
+    <button (click)="save()">save</button>
+  </div>
